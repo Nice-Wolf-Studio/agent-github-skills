@@ -239,24 +239,32 @@ gh project item-list 1 --owner myorg --format json --jq '.items[] | select(.cont
 
 ### Edit Project Items
 
+**Note:** The `item-edit` command requires GraphQL IDs, not just the project number. Get these from `--format json` output of other commands.
+
 **Update item field:**
 ```bash
-gh project item-edit --project-id <PROJECT_ID> --id <ITEM_ID> --field-id <FIELD_ID> --text "In Progress"
+# First, get the project ID and field ID from JSON output
+PROJECT_ID=$(gh project view 1 --owner myorg --format json --jq '.id')
+FIELD_ID=$(gh project field-list 1 --owner myorg --format json --jq '.fields[] | select(.name == "Status") | .id')
+ITEM_ID=$(gh project item-list 1 --owner myorg --format json --jq '.items[0].id')
+
+# Then update the field
+gh project item-edit --project-id "$PROJECT_ID" --id "$ITEM_ID" --field-id "$FIELD_ID" --text "In Progress"
 ```
 
 **Update iteration field:**
 ```bash
-gh project item-edit --project-id <PROJECT_ID> --id <ITEM_ID> --field-id <FIELD_ID> --iteration-id <ITERATION_ID>
+gh project item-edit --project-id "$PROJECT_ID" --id "$ITEM_ID" --field-id "$FIELD_ID" --iteration-id <ITERATION_ID>
 ```
 
 **Update date field:**
 ```bash
-gh project item-edit --project-id <PROJECT_ID> --id <ITEM_ID> --field-id <FIELD_ID> --date 2025-12-31
+gh project item-edit --project-id "$PROJECT_ID" --id "$ITEM_ID" --field-id "$FIELD_ID" --date 2025-12-31
 ```
 
 **Clear field value:**
 ```bash
-gh project item-edit --project-id <PROJECT_ID> --id <ITEM_ID> --field-id <FIELD_ID> --clear
+gh project item-edit --project-id "$PROJECT_ID" --id "$ITEM_ID" --field-id "$FIELD_ID" --clear
 ```
 
 ### Archive Items
@@ -537,20 +545,20 @@ echo "=== Daily Standup Report ==="
 echo "Project: $(gh project view $PROJECT_NUM --owner $OWNER --format json --jq '.title')"
 echo ""
 
-# Recently updated items
-echo "Recently Updated (last 24h):"
-gh project item-list $PROJECT_NUM --owner $OWNER --format json --jq '.items[] | select(.content.updatedAt > (now - 86400 | strftime("%Y-%m-%dT%H:%M:%SZ"))) | "- \(.title)"'
+# Recently updated items (showing last 10 updated)
+echo "Recently Updated:"
+gh project item-list $PROJECT_NUM --owner $OWNER --format json --jq '.items | sort_by(.content.updatedAt) | reverse | .[0:10] | .[] | "- \(.title) (updated: \(.content.updatedAt))"'
 ```
 
 **Sprint velocity calculation:**
 ```bash
 #!/bin/bash
-# Get completed items with story points
+# Note: Field structure depends on your custom fields
+# This is an example - adjust field names to match your project
 gh project item-list 1 --owner myorg --format json --jq '
-  .items[] | 
-  select(.content.state == "CLOSED") | 
-  {title, points: .fieldValues.storyPoints}
-' | jq -s 'map(.points) | add'
+  [.items[] | 
+  select(.content.state == "CLOSED")] | 
+  "Total closed items: \(length)"'
 ```
 
 ## Field Types Reference
