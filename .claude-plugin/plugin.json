@@ -1,0 +1,13 @@
+{
+  "name": "github-skills",
+  "description": "GitHub operations skills using gh CLI - manage repos, issues, PRs, code review, releases, workflows, and more",
+  "version": "1.0.0",
+  "author": {
+    "name": "Jeremy Miranda",
+    "email": "jeremy@example.com"
+  },
+  "homepage": "https://github.com/Nice-Wolf-Studio/agent-github-skills",
+  "repository": "https://github.com/Nice-Wolf-Studio/agent-github-skills",
+  "license": "MIT",
+  "keywords": ["github", "code-review", "pull-requests", "issues", "workflows", "releases", "gh-cli"]
+}

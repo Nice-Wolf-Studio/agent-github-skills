@@ -1,4 +1,4 @@
-# Claude GitHub Skills
+# Agent GitHub Skills
 
 A collection of Claude Code skills that provide GitHub functionality, converting the GitHub MCP server operations into easy-to-use skills that leverage the `gh` CLI.
 
@@ -24,19 +24,34 @@ This project converts all GitHub MCP server functionality into Claude Code skill
 
 ## Installation
 
+### Via Plugin System (Recommended)
+
+Install as a Claude Code plugin for automatic updates and integration:
+
+```bash
+# Install directly from GitHub (once pushed)
+/plugin install https://github.com/Nice-Wolf-Studio/agent-github-skills.git
+```
+
+Or add to a marketplace and install:
+```bash
+# Add your marketplace
+/plugin marketplace add yourusername/your-marketplace
+
+# Install the plugin
+/plugin install github-skills@your-marketplace
+```
+
+### Manual Installation (Alternative)
+
 1. Clone this repository:
 ```bash
-git clone https://github.com/wolfagents-bot/claude-github-skills.git
+git clone https://github.com/Nice-Wolf-Studio/agent-github-skills.git
 ```
 
-2. Copy the skill files to your Claude Code skills directory:
+2. Symlink for easier updates:
 ```bash
-cp claude-github-skills/skills/* ~/.claude/skills/
-```
-
-Or symlink for easier updates:
-```bash
-ln -s $(pwd)/claude-github-skills/skills ~/.claude/skills/github
+ln -s $(pwd)/agent-github-skills/skills ~/.claude/skills/github
 ```
 
 3. Verify installation:
@@ -46,6 +61,8 @@ ls ~/.claude/skills/
 
 ## Available Skills
 
+### Core Operations
+
 | Skill | Description | Key Operations |
 |-------|-------------|----------------|
 | `repository-management` | Manage repositories | create, fork, branch, file operations |
@@ -54,6 +71,20 @@ ls ~/.claude/skills/
 | `code-review` | Review PRs | create reviews, approve, request changes |
 | `search-operations` | Search GitHub | search code, issues, users, repos |
 | `commit-operations` | View commits | list commits by repo/branch |
+
+### CI/CD & Releases
+
+| Skill | Description | Key Operations |
+|-------|-------------|----------------|
+| `workflow-management` | GitHub Actions workflows | trigger, monitor, view logs, download artifacts |
+| `release-management` | Manage releases | create releases, upload assets, manage tags |
+
+### Organization & Collaboration
+
+| Skill | Description | Key Operations |
+|-------|-------------|----------------|
+| `label-management` | Manage labels | create, edit, delete, apply labels |
+| `gist-management` | Manage gists | create, list, edit, share code snippets |
 
 ## Quick Start
 
@@ -96,6 +127,22 @@ Use pull-request-management to:
 1. Create a PR from feature-branch to main
 2. Check the PR status
 3. Merge it once tests pass
+```
+
+**CI/CD workflow:**
+```
+Use workflow-management to:
+1. Trigger the deployment workflow
+2. Monitor the workflow run
+3. Download build artifacts when complete
+```
+
+**Release workflow:**
+```
+Use release-management to:
+1. Create a new release v1.2.0
+2. Upload build artifacts
+3. Generate release notes from commits
 ```
 
 ## Skill Reference
@@ -154,6 +201,44 @@ Operations:
 - List commits by repository
 - List commits by branch
 - View commit details
+
+### workflow-management
+
+Operations:
+- List and view workflow runs
+- Trigger workflows manually
+- Cancel and rerun workflows
+- View workflow logs
+- Download build artifacts
+- Monitor CI/CD pipelines
+
+### release-management
+
+Operations:
+- Create and publish releases
+- Upload release assets
+- Manage release tags
+- Edit release notes
+- Download release assets
+- View release statistics
+
+### label-management
+
+Operations:
+- Create and edit labels
+- Delete labels
+- Apply labels to issues/PRs
+- Clone labels between repos
+- Organize with color coding
+
+### gist-management
+
+Operations:
+- Create and edit gists
+- List and view gists
+- Clone gists as repos
+- Star and fork gists
+- Share code snippets
 
 ## Authentication
 

@@ -1,3 +1,7 @@
+---
+name: pull-request-management
+description: GitHub PR operations - create, list, merge, update, and manage pull requests using gh CLI
+---
 # GitHub Pull Request Management Skill
 
 This skill provides comprehensive pull request (PR) management operations including creating, listing, reviewing, merging, and managing PR status.

@@ -1,3 +1,8 @@
+---
+name: commit-operations
+description: View and analyze commits in GitHub repositories - commit history, diffs, and commit details using gh CLI
+---
+
 # GitHub Commit Operations Skill
 
 This skill provides operations for viewing and analyzing commits in GitHub repositories, including commit history, diffs, and commit details.

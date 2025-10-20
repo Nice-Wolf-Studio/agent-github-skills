@@ -1,3 +1,8 @@
+---
+name: code-review
+description: GitHub code review operations - approve PRs, request changes, comment on code, and manage review workflows using gh CLI
+---
+
 # GitHub Code Review Skill
 
 This skill provides code review operations for pull requests, including approving, requesting changes, commenting on code, and managing review workflows.

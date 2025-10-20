@@ -1,3 +1,7 @@
+---
+name: search-operations
+description: Search GitHub - find code, issues, users, and repositories across GitHub using gh CLI
+---
 # GitHub Search Operations Skill
 
 This skill provides comprehensive search capabilities across GitHub including searching for code, issues, pull requests, repositories, and users.

@@ -1,3 +1,7 @@
+---
+name: repository-management
+description: Manage GitHub repositories - create, fork, branch, and file operations using gh CLI
+---
 # GitHub Repository Management Skill
 
 This skill provides comprehensive repository management operations including creating repositories, managing branches, and working with files.

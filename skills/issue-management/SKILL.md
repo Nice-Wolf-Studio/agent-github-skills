@@ -1,3 +1,7 @@
+---
+name: issue-management
+description: Work with GitHub issues - create, list, update, comment, and search issues using gh CLI
+---
 # GitHub Issue Management Skill
 
 This skill provides comprehensive issue management operations including creating, listing, updating, and commenting on GitHub issues.
