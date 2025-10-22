@@ -69,6 +69,7 @@ ls ~/.claude/skills/
 | `issue-management` | Work with issues | create, list, update, comment |
 | `pull-request-management` | PR operations | create, list, merge, update |
 | `code-review` | Review PRs | create reviews, approve, request changes |
+| `project-management` | Manage GitHub Projects | create, list, add items, manage fields |
 | `search-operations` | Search GitHub | search code, issues, users, repos |
 | `commit-operations` | View commits | list commits by repo/branch |
 
@@ -186,6 +187,17 @@ Operations:
 - Approve changes
 - Request changes
 - Add review comments
+
+### project-management
+
+Operations:
+- Create and manage projects
+- Add issues and PRs to projects
+- Create draft issues
+- List and view project items
+- Manage custom fields
+- Link projects to repositories
+- Archive and organize items
 
 ### search-operations
 
